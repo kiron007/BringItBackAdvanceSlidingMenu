@@ -1,5 +1,6 @@
 package com.hkm.slidingmenulib.layoutdesigns;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.FragmentTransaction;
 import android.os.Build;
@@ -88,9 +89,11 @@ public abstract class singleDetailPost<Frag> extends AppCompatActivity implement
      * the location to setup and configure the toolbar widget under AppCompat V7
      *
      * @param v7 Toolbar object
+     * @return bool if that is an overrider to disable homeButton appearance
      */
-    protected void configToolBar(final Toolbar v7) {
+    protected boolean configToolBar(final Toolbar v7) {
         v7.setTitle(getTitle());
+        return false;
     }
 
     /**
@@ -106,10 +109,13 @@ public abstract class singleDetailPost<Frag> extends AppCompatActivity implement
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     widgetToolBar.setElevation(0f);
                 }
-                configToolBar(widgetToolBar);
+                if (!configToolBar(widgetToolBar)) {
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+                }
                 setSupportActionBar(widgetToolBar);
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+                //enabled more customizations
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -271,10 +277,4 @@ public abstract class singleDetailPost<Frag> extends AppCompatActivity implement
         super.finish();
     }
 
-    @Override
-    protected void onResume() {
-        super.onPause();
-        // if (mVideo.getVisibility() == View.VISIBLE)
-        //  mVideo.onResume();
-    }
 }

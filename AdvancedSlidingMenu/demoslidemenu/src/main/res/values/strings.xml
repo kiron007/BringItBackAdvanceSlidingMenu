@@ -5,4 +5,5 @@
     <string name="action_settings2">Settings2</string>
     <string name="action_settings3">Settings3</string>
     <string name="action_settings4">Settings4</string>
+    <string name="comment_area">write comment</string>
 </resources>

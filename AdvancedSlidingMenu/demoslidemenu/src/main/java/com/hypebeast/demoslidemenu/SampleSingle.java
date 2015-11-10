@@ -6,19 +6,14 @@ import android.support.v7.widget.Toolbar;
 
 import com.hkm.advancedtoolbar.V5.BeastBar;
 import com.hkm.slidingmenulib.layoutdesigns.singleDetailPost;
-import com.hypebeast.demoslidemenu.pages.menusystemtree;
+import com.hypebeast.demoslidemenu.pages.mainpageDemo;
 
 /**
- * Created by hesk on 9/9/15.
+ * Created by hesk on 10/11/15.
  */
-public class CommonSingle extends singleDetailPost {
+public class SampleSingle extends singleDetailPost<mainpageDemo> {
     @Override
     protected void loadPageWithFullURL(String url) {
-
-    }
-
-    @Override
-    protected void loadPageWithPID(long pid) {
 
     }
 
@@ -40,8 +35,11 @@ public class CommonSingle extends singleDetailPost {
                 finish();
             }
         });
-        return false;
+
+
+        return true;
     }
+
 
     public static BeastBar.Builder getSingleToolBar(Context mContext) {
         BeastBar.Builder bb = new BeastBar.Builder();
@@ -54,6 +52,12 @@ public class CommonSingle extends singleDetailPost {
         return bb;
     }
 
+
+    @Override
+    protected void loadPageWithPID(long pid) {
+
+    }
+
     /**
      * setting the first initial fragment at the beginning
      *
@@ -61,8 +65,8 @@ public class CommonSingle extends singleDetailPost {
      * @throws Exception the exception for the wrongs
      */
     @Override
-    protected menusystemtree getInitFragment() throws Exception {
-        return new menusystemtree();
+    protected mainpageDemo getInitFragment() throws Exception {
+        return new mainpageDemo();
     }
 
     @Override
